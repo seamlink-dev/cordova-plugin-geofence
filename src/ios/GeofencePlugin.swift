@@ -141,6 +141,7 @@ func log(_ messages: [String]) {
         }
     }
 
+    @objc
     func didReceiveTransition (_ notification: Notification) {
         log("didReceiveTransition")
         if let geoNotificationString = notification.object as? String {
@@ -151,6 +152,7 @@ func log(_ messages: [String]) {
         }
     }
 
+    @objc
     func didReceiveLocalNotification (_ notification: Notification) {
         log("didReceiveLocalNotification")
         if UIApplication.shared.applicationState != UIApplicationState.active {
