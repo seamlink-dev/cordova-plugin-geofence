@@ -111,6 +111,7 @@ func log(_ messages: [String]) {
         }
     }
 
+	@objc
     func getWatched(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(priority: priority).async {
             let watched = self.geoNotificationManager.getWatchedGeoNotifications()!
@@ -122,6 +123,7 @@ func log(_ messages: [String]) {
         }
     }
 
+ 	@objc
     func remove(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(priority: priority).async {
             for id in command.arguments {
@@ -134,6 +136,7 @@ func log(_ messages: [String]) {
         }
     }
 
+	@objc
     func removeAll(_ command: CDVInvokedUrlCommand) {
         DispatchQueue.global(priority: priority).async {
             self.geoNotificationManager.removeAllGeoNotifications()
