@@ -280,6 +280,7 @@ class GeoNotificationManager : NSObject, CLLocationManagerDelegate {
         locationManager.startMonitoring(for: region)
     }
 
+	// TODO Make notification settings synchronous
     func checkRequirements() -> (Bool, [String], [String]) {
         var errors = [String]()
         var warnings = [String]()
@@ -299,7 +300,7 @@ class GeoNotificationManager : NSObject, CLLocationManagerDelegate {
         }
 
         if (iOS8) {
-			DispatchQueue.main.sync {
+			DispatchQueue.main.async { // Due to async, the return of checkRequirements is not ok
 	            if let notificationSettings = UIApplication.shared.currentUserNotificationSettings {
 	                if notificationSettings.types == UIUserNotificationType() {
 	                    errors.append("Error: notification permission missing")
